@@ -1,0 +1,71 @@
+<!-- Título -->
+<h1 class="text-center my-4">Catálogo de Películas</h1>
+<!-- Campo de búsqueda -->
+<div class="search-container text-center mb-4">
+  <input
+    type="text"
+    placeholder="Buscar película..."
+    [(ngModel)]="searchQuery"
+    (input)="searchMovies()"
+    class="form-control w-50"
+  />
+</div>
+
+
+<!-- Filtros -->
+<div class="filters d-flex justify-content-center gap-3 mb-4">
+  <!-- Filtro por género -->
+  <div>
+    <label for="genreFilter" class="form-label">Filtrar por Género:</label>
+    <select id="genreFilter" class="form-select" (change)="filterByGenre($event)">
+      <option value="">Seleccionar Género</option>
+      <option *ngFor="let genre of genres" [value]="genre.id">{{ genre.name }}</option>
+    </select>
+  </div>
+
+  <!-- Filtro por actor -->
+  <div>
+    <label for="actorFilter" class="form-label">Filtrar por Actor:</label>
+    <select id="actorFilter" class="form-select" (change)="filterByActor($event)">
+      <option value="">Seleccionar Actor</option>
+      <option *ngFor="let actor of actors" [value]="actor.id">{{ actor.name }}</option>
+    </select>
+  </div>
+
+  <!-- Botón para mostrar las películas más populares -->
+  <div>
+    <label class="form-label d-block">&nbsp;</label>
+    <button class="btn btn-primary" (click)="filterPopularMovies()">Películas Populares</button>
+  </div>
+</div>
+
+<!-- Contenedor de películas -->
+<div class="movie-container row">
+  <div *ngFor="let movie of movies" class="movie-card col-md-3 mb-4">
+    <div class="card h-100">
+      <img
+        [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+        class="card-img-top"
+        alt="Poster de {{ movie.title }}"
+      />
+      <div class="card-body">
+        <h3 class="card-title">{{ movie.title }}</h3>
+        <p class="card-text"><small>{{ movie.release_date | date }}</small></p>
+        <p class="card-text">{{ movie.overview }}</p>
+        <a class="btn btn-primary w-100" [routerLink]="['/detalle', movie.id]">Ver detalles</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Paginación -->
+<div class="pagination d-flex justify-content-center mt-4">
+  <button class="btn btn-outline-primary me-2" (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+  <span class="align-self-center">Página {{ currentPage }} de {{ totalPages }}</span>
+  <button class="btn btn-outline-primary ms-2" (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+</div>
+
+<!-- Plantilla alternativa si no hay películas -->
+<ng-template #noMovies>
+  <p class="text-center text-muted">No hay películas para mostrar.</p>
+</ng-template>

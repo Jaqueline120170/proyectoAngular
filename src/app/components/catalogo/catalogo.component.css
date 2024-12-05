@@ -1,0 +1,61 @@
+
+/* Añadir estos estilos dentro de tu archivo CSS */
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.movie-card {
+  width: 200px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.movie-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.mat-card-title {
+  font-size: 1.2rem;
+}
+
+.mat-card-content {
+  padding: 10px;
+}
+
+.search-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.search-container mat-form-field {
+  width: 100%;
+  max-width: 400px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  margin-top: 10px;
+  font-size: 16px;
+}

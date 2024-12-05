@@ -1,0 +1,26 @@
+<div *ngIf="movie; else loading">
+    <div class="movie-details-container">
+      <img
+        [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+        alt="Poster de {{ movie.title }}"
+        class="movie-poster"
+      />
+      <div class="movie-info">
+        <h2>{{ movie.title }}</h2>
+        <p><strong>Fecha de lanzamiento:</strong> {{ movie.release_date | date }}</p>
+        <p><strong>Resumen:</strong> {{ movie.overview }}</p>
+        <p>
+          <strong>Géneros:</strong>
+          <span *ngFor="let genre of movie.genres">{{ genre.name }}</span>
+        </p>
+        <p><strong>Calificación:</strong> {{ movie.vote_average }}/10</p>
+        <a class="btn btn-primary mt-3" routerLink="/">Volver al catálogo</a>
+
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #loading>
+    <p class="text-center">Cargando detalles de la película...</p>
+  </ng-template>
+  
