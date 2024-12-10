@@ -33,8 +33,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "https://bungee-project.djr.com/resources/web/bungee.css"
             ],
-            "scripts": [ "https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js",
-            "https://bungee-project.djr.com/resources/web/bungee.js"],
+            "scripts": [],
              "baseHref": "/"
           },
           "configurations": {
@@ -100,5 +99,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "e4f005bb-cebd-4ced-b070-36c7b42380f8"
   }
 }

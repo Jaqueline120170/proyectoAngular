@@ -6,10 +6,17 @@ import { DetalleComponent } from './components/detalle/detalle.component';
 @Component({
   selector: 'app-root',
   standalone: true, // Indicamos que el componente es standalone
-  imports: [RouterModule, CatalogoComponent, DetalleComponent], //  enrutador y los componentes
+  imports: [RouterModule, CatalogoComponent, DetalleComponent], // Importamos enrutador y los componentes
   template: `
     <router-outlet></router-outlet> <!-- Punto de entrada del enrutamiento -->
   `,
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {}
+export class AppComponent {
+  // Método para manejar eventos emitidos por el componente hijo
+  handleFilterEvent(eventMessage: string): void {
+    console.log('Evento recibido desde CatalogoComponent:', eventMessage);
+    
+  }
+}
+

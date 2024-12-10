@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'; // Necesario para obtener parámetros de la URL
+import { ActivatedRoute } from '@angular/router';// Necesario para obtener parámetros de la URL
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';  // Asegúrate de importar RouterModule
+import { RouterModule } from '@angular/router'; // Asegúrate de importar RouterModule
 import { TmdbService } from '../../services/tmdb.service'; // Servicio para interactuar con la API
 
 @Component({

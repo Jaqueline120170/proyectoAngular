@@ -1,17 +1,17 @@
 <!-- Fondo decorativo -->
 <div class="background-overlay">
-  
   <div class="text-center">
     <!-- Título de "Bienvenido a Movieverse" con clases de Bungee -->
-    <figure class="bungee regular-d42b26  inline-ef7575 shade-ece4e1 sign-f2eceb horizontal" style="font-size: 50px;">
+    <figure class="bungee regular-d42b26 inline-ef7575 shade-ece4e1 sign-f2eceb horizontal" style="font-size: 50px;">
       Bienvenido a Movieverse
     </figure>
   </div>
   <div class="text-center">
-  <figure class="bungee regular-efbb43  inline-eae2b1 shade-c9060e outline-3e0e00 sign-111111 horizontal" style="font-size: 40px;">
-    Catálogo de películas
-  </figure>
-</div>
+    <figure class="bungee regular-efbb43 inline-eae2b1 shade-c9060e outline-3e0e00 sign-111111 horizontal" style="font-size: 40px;">
+      Catálogo de películas
+    </figure>
+  </div>
+
   <!-- Campo de búsqueda -->
   <div class="d-flex justify-content-center mb-4">
     <div class="w-50">
@@ -66,7 +66,15 @@
           <p>{{ movie.overview }}</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button color="accent" class="w-100" [routerLink]="['/detalle', movie.id]">Ver detalles</button>
+          <button
+            mat-raised-button
+            color="accent"
+            class="w-100"
+            [routerLink]="['/detalle', movie.id]"
+            (click)="emitFilterEvent('Detalles: ' + movie.title)"
+          >
+            Ver detalles
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -80,7 +88,8 @@
   </div>
 
   <!-- Plantilla alternativa si no hay películas -->
-  <ng-template #noMovies>
-    <p class="text-center text-muted">No hay películas para mostrar.</p>
-  </ng-template>
+  <div *ngIf="isLoading" class="loading-spinner">
+  <p>Cargando películas...</p>
+</div>
+
 </div>
