@@ -6,7 +6,7 @@ import { DetalleComponent } from './components/detalle/detalle.component';
 @Component({
   selector: 'app-root',
   standalone: true, // Indicamos que el componente es standalone
-  imports: [RouterModule, CatalogoComponent, DetalleComponent], // Asegúrate de importar el enrutador y los componentes
+  imports: [RouterModule, CatalogoComponent, DetalleComponent], //  enrutador y los componentes
   template: `
     <router-outlet></router-outlet> <!-- Punto de entrada del enrutamiento -->
   `,
