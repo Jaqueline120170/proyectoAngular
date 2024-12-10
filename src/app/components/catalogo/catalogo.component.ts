@@ -52,6 +52,7 @@ export class CatalogoComponent implements OnInit {
     this.tmdbService.getPopularActors().subscribe((data: any) => {
       this.actors = data.results;
     });
+   
   }
 
   // Método para cargar las películas según la página
@@ -118,4 +119,5 @@ export class CatalogoComponent implements OnInit {
       });
     }
   }
+  
 }

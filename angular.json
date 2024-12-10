@@ -21,16 +21,20 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
+              
               {
                 "glob": "**/*",
                 "input": "public"
+                
               }
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "https://bungee-project.djr.com/resources/web/bungee.css"
             ],
-            "scripts": [],
+            "scripts": [ "https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js",
+            "https://bungee-project.djr.com/resources/web/bungee.js"],
              "baseHref": "/"
           },
           "configurations": {

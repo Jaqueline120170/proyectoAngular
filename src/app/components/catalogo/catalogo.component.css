@@ -1,61 +1,85 @@
-
-/* Añadir estos estilos dentro de tu archivo CSS */
-.movie-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-around;
+/* Fondo negro */
+.background-overlay {
+  background-color: #000; /* Fondo negro */
+  color: #fff; /* Color de texto blanco */
+  
+  padding: 20px;
+  min-height: 100vh;
 }
 
-.movie-card {
-  width: 200px;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+/* Botón de "Ver detalles" en color rojo */
+.movie-card mat-card-actions button {
+  background-color: #d9534f; /* Rojo para el botón */
+  color: #fff; /* Texto blanco */
+  font-family: 'Bungee Inline', sans-serif;
+  border-radius: 4px; /* Bordes redondeados */
+  /*font-weight: bold; /* Texto en negrita */
+  transition: background-color 0.3s; /* Efecto de transición */
 }
 
-.movie-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 4px;
+.movie-card mat-card-actions button:hover {
+  background-color: #c9302c; /* Rojo más oscuro al pasar el cursor */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil al hacer hover */
 }
 
-.mat-card-title {
-  font-size: 1.2rem;
+/* Campo de búsqueda */
+.search-container input {
+  width: 100%; /* Ancho completo */
+  max-width: 500px; /* Ancho máximo */
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 5px; /* Bordes redondeados */
+  border: 1px solid #ddd; /* Borde gris */
+  transition: border-color 0.3s; /* Efecto de transición */
 }
 
-.mat-card-content {
-  padding: 10px;
+.search-container input:focus {
+  border-color: #d9534f; /* Borde rojo al enfocarse */
+  outline: none; /* Quitamos el borde por defecto al enfocar */
 }
 
-.search-container {
-  margin: 20px 0;
-  text-align: center;
-}
-
-.search-container mat-form-field {
-  width: 100%;
-  max-width: 400px;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
+/* Paginación */
 .pagination button {
-  padding: 10px 20px;
   margin: 0 10px;
-  cursor: pointer;
-}
-
-.pagination button:disabled {
-  background-color: #e0e0e0;
-  cursor: not-allowed;
+  font-size: 1rem;
 }
 
 .pagination span {
-  margin-top: 10px;
-  font-size: 16px;
+  font-size: 1rem;
+}
+
+/* Filtros */
+.filters label {
+  color: white;
+  font-size: 1rem; /* Ajuste de tamaño */
+  font-weight: bold; /* Negrita */
+}
+
+/* Contenedor de películas */
+.movie-container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* Movie card */
+.movie-card mat-card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border-radius: 10px;
+}
+
+.movie-card mat-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Mat-card titles */
+mat-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Estilo de la cabecera con el título */
+.welcome-title, .text-center {
+  text-align: center;
 }

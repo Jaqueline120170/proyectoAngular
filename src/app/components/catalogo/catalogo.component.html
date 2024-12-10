@@ -1,71 +1,86 @@
-<!-- Título -->
-<h1 class="text-center my-4">Catálogo de Películas</h1>
-<!-- Campo de búsqueda -->
-<div class="search-container text-center mb-4">
-  <input
-    type="text"
-    placeholder="Buscar película..."
-    [(ngModel)]="searchQuery"
-    (input)="searchMovies()"
-    class="form-control w-50"
-  />
+<!-- Fondo decorativo -->
+<div class="background-overlay">
+  
+  <div class="text-center">
+    <!-- Título de "Bienvenido a Movieverse" con clases de Bungee -->
+    <figure class="bungee regular-d42b26  inline-ef7575 shade-ece4e1 sign-f2eceb horizontal" style="font-size: 50px;">
+      Bienvenido a Movieverse
+    </figure>
+  </div>
+  <div class="text-center">
+  <figure class="bungee regular-efbb43  inline-eae2b1 shade-c9060e outline-3e0e00 sign-111111 horizontal" style="font-size: 40px;">
+    Catálogo de películas
+  </figure>
 </div>
-
-
-<!-- Filtros -->
-<div class="filters d-flex justify-content-center gap-3 mb-4">
-  <!-- Filtro por género -->
-  <div>
-    <label for="genreFilter" class="form-label">Filtrar por Género:</label>
-    <select id="genreFilter" class="form-select" (change)="filterByGenre($event)">
-      <option value="">Seleccionar Género</option>
-      <option *ngFor="let genre of genres" [value]="genre.id">{{ genre.name }}</option>
-    </select>
-  </div>
-
-  <!-- Filtro por actor -->
-  <div>
-    <label for="actorFilter" class="form-label">Filtrar por Actor:</label>
-    <select id="actorFilter" class="form-select" (change)="filterByActor($event)">
-      <option value="">Seleccionar Actor</option>
-      <option *ngFor="let actor of actors" [value]="actor.id">{{ actor.name }}</option>
-    </select>
-  </div>
-
-  <!-- Botón para mostrar las películas más populares -->
-  <div>
-    <label class="form-label d-block">&nbsp;</label>
-    <button class="btn btn-primary" (click)="filterPopularMovies()">Películas Populares</button>
-  </div>
-</div>
-
-<!-- Contenedor de películas -->
-<div class="movie-container row">
-  <div *ngFor="let movie of movies" class="movie-card col-md-3 mb-4">
-    <div class="card h-100">
-      <img
-        [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
-        class="card-img-top"
-        alt="Poster de {{ movie.title }}"
+  <!-- Campo de búsqueda -->
+  <div class="d-flex justify-content-center mb-4">
+    <div class="w-50">
+      <input
+        type="text"
+        placeholder="Buscar película..."
+        [(ngModel)]="searchQuery"
+        (input)="searchMovies()"
+        class="form-control"
       />
-      <div class="card-body">
-        <h3 class="card-title">{{ movie.title }}</h3>
-        <p class="card-text"><small>{{ movie.release_date | date }}</small></p>
-        <p class="card-text">{{ movie.overview }}</p>
-        <a class="btn btn-primary w-100" [routerLink]="['/detalle', movie.id]">Ver detalles</a>
-      </div>
     </div>
   </div>
-</div>
 
-<!-- Paginación -->
-<div class="pagination d-flex justify-content-center mt-4">
-  <button class="btn btn-outline-primary me-2" (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
-  <span class="align-self-center">Página {{ currentPage }} de {{ totalPages }}</span>
-  <button class="btn btn-outline-primary ms-2" (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
-</div>
+  <!-- Filtros -->
+  <div class="filters d-flex justify-content-center gap-3 mb-4">
+    <!-- Filtro por género -->
+    <div>
+      <label for="genreFilter" class="form-label text-white">Filtrar por Género:</label>
+      <select id="genreFilter" class="form-select" (change)="filterByGenre($event)">
+        <option value="">Seleccionar Género</option>
+        <option *ngFor="let genre of genres" [value]="genre.id">{{ genre.name }}</option>
+      </select>
+    </div>
+    <!-- Filtro por actor -->
+    <div>
+      <label for="actorFilter" class="form-label text-white">Filtrar por Actor:</label>
+      <select id="actorFilter" class="form-select" (change)="filterByActor($event)">
+        <option value="">Seleccionar Actor</option>
+        <option *ngFor="let actor of actors" [value]="actor.id">{{ actor.name }}</option>
+      </select>
+    </div>
 
-<!-- Plantilla alternativa si no hay películas -->
-<ng-template #noMovies>
-  <p class="text-center text-muted">No hay películas para mostrar.</p>
-</ng-template>
+    <!-- Botón para mostrar las películas más populares -->
+    <div>
+      <label class="form-label d-block">&nbsp;</label>
+      <button mat-raised-button color="primary" (click)="filterPopularMovies()">Películas Populares</button>
+    </div>
+  </div>
+
+  <!-- Contenedor de películas -->
+  <div class="movie-container row justify-content-center">
+    <div *ngFor="let movie of movies" class="movie-card col-md-3 mb-4">
+      <mat-card class="h-100">
+        <img
+          mat-card-image
+          [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+          alt="Poster de {{ movie.title }}"
+        />
+        <mat-card-content>
+          <h3 mat-card-title>{{ movie.title }}</h3>
+          <p><small>{{ movie.release_date | date }}</small></p>
+          <p>{{ movie.overview }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="accent" class="w-100" [routerLink]="['/detalle', movie.id]">Ver detalles</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Paginación -->
+  <div class="pagination d-flex justify-content-center mt-4">
+    <button mat-stroked-button color="primary" (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+    <span class="align-self-center text-white mx-3">Página {{ currentPage }} de {{ totalPages }}</span>
+    <button mat-stroked-button color="primary" (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+  </div>
+
+  <!-- Plantilla alternativa si no hay películas -->
+  <ng-template #noMovies>
+    <p class="text-center text-muted">No hay películas para mostrar.</p>
+  </ng-template>
+</div>

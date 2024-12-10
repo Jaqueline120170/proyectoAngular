@@ -8,7 +8,6 @@ import { DetalleComponent } from './components/detalle/detalle.component';
   standalone: true, // Indicamos que el componente es standalone
   imports: [RouterModule, CatalogoComponent, DetalleComponent], // Asegúrate de importar el enrutador y los componentes
   template: `
-    <h1>Bienvenido a Movieverse</h1>
     <router-outlet></router-outlet> <!-- Punto de entrada del enrutamiento -->
   `,
   styleUrls: ['./app.component.css']
